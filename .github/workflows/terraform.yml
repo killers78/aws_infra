@@ -1,0 +1,26 @@
+name: Terraform with Atlantis
+
+on:
+  push:
+    branches:
+      - main  # ajuste conforme necessário
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Atlantis apply
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TF_CLI_ARGS: "-input=false"
+      run: |
+        docker run --rm \
+          -v $(pwd):/workspace \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          runatlantis/atlantis:vX.X.X \
+          atlantis apply /workspace
+
