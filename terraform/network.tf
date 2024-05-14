@@ -11,7 +11,7 @@ resource "aws_subnet" "private01" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a" 
   tags = {
-    Name = "Private"
+    Name = "Private subnet"
   }
 }
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "nat01" {
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-1b"  
   tags = {
-    Name = "Nat"
+    Name = "Nat subnet"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "public01" {
   cidr_block        = "10.0.3.0/24"
   availability_zone = "us-east-1c" 
   tags = {
-    Name = "Public"
+    Name = "Public subnet"
   }
 }
 
